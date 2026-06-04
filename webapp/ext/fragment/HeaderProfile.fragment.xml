@@ -1,0 +1,66 @@
+<mvc:View
+	height="100%"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+
+	<ObjectHeader
+		id="employeeHeader"
+		responsive="true"
+		fullScreenOptimized="true"
+		icon="sap-icon://person-placeholder"
+		imageShape="Circle"
+		title="{userInfo>/UserName}"
+		intro="{userInfo>/PostionText}"
+		backgroundDesign="Solid"
+		class="sapUiTinyMarginBottom sapUiResponsivePadding--header">
+
+		<attributes>
+
+			<ObjectAttribute id="_IDGenObjectAttribute1"
+				title="JHAH ID"
+				text="{userInfo>/Pernr}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute2"
+				title="Login ID"
+				text="{userInfo>/Usrid}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute4"
+				title="Badge Number"
+				text="{userInfo>/UserPosition}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute5"
+				title="Government ID"
+				text="{userInfo>/GovermentID}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute6"
+				title="Organization"
+				text="{userInfo>/OrganizationText}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute7"
+				title="Date of Birth"
+				text="{
+					path: 'userInfo>/DOB',
+					type: 'sap.ui.model.type.Date',
+					formatOptions: {
+						source: {
+							pattern: 'yyyyMMdd'
+						},
+						pattern: 'dd/MM/yyyy'
+					}
+				}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute8"
+				title="Blood Group"
+				text="{userInfo>/BloodGroup}" />
+
+			<ObjectAttribute id="_IDGenObjectAttribute9"
+				title="E-Mail"
+				text="{userInfo>/EMail}"
+				active="true" />
+
+		</attributes>
+
+	</ObjectHeader>
+</mvc:View>
