@@ -151,6 +151,15 @@
                     "route": "VisitorDetailsObjectPage"
                   }
                 }
+              },
+              "controlConfiguration": {
+                "_VisitorDetails/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "creationMode": {
+                      "name": "Inline"
+                    }
+                  }
+                }
               }
             }
           }

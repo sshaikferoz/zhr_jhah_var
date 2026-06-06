@@ -13,6 +13,31 @@
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+
+            <!-- Dynamic placeholder for IdNum based on the selected IdTyp value -->
+            <Annotations Target="SAP__self.VisitorDetailsType/IdNum">
+                <Annotation Term="UI.Placeholder">
+                    <If>
+                        <Eq>
+                            <Path>IdTyp</Path>
+                            <String>GOV</String>
+                        </Eq>
+                        <!-- GOV: Saudi National ID format -->
+                        <String>2NNNNNNNNNN</String>
+                        <If>
+                            <Eq>
+                                <Path>IdTyp</Path>
+                                <String>IQM</String>
+                            </Eq>
+                            <!-- IQM: Iqama (Residence Permit) format -->
+                            <String>1NNNNNNNNN</String>
+                            <!-- Default: no specific ID type selected yet -->
+                            <String>Enter ID Number</String>
+                        </If>
+                    </If>
+                </Annotation>
+            </Annotations>
+
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
