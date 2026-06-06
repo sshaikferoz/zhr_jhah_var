@@ -15,7 +15,7 @@
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
 
             <!-- Dynamic placeholder for IdNum based on the selected IdTyp value.
-                 Strings are resolved from i18n at preprocessing time via {@i18n>key}. -->
+                 Note: {@i18n>} cannot be used inside edm:If branches — literal strings required. -->
             <Annotations Target="SAP__self.VisitorDetailsType/IdNum">
                 <Annotation Term="UI.Placeholder">
                     <If>
@@ -23,14 +23,14 @@
                             <Path>IdTyp</Path>
                             <String>GOV</String>
                         </Eq>
-                        <String>{@i18n>idNumPlaceholderGov}</String>
+                        <String>2NNNNNNNNNN</String>
                         <If>
                             <Eq>
                                 <Path>IdTyp</Path>
                                 <String>IQM</String>
                             </Eq>
-                            <String>{@i18n>idNumPlaceholderIqm}</String>
-                            <String>{@i18n>idNumPlaceholderDefault}</String>
+                            <String>1NNNNNNNNN</String>
+                            <String>Enter ID Number</String>
                         </If>
                     </If>
                 </Annotation>
