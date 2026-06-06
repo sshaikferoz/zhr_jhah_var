@@ -8,8 +8,10 @@ sap.ui.define([
 	return ControllerExtension.extend('com.jhah.zhrjhahvar.ext.controller.CustomHeader', {
 		override: {
 			onInit: function () {
+				this._setShellTitle();
+
 				// var oView = this.base.getView();
-				
+
 				// this._myDelegate = {
 				// 	"onAfterRendering": function () {
 				// 		this._loadDataAndFragment();
@@ -17,6 +19,28 @@ sap.ui.define([
 				// };
 				// oView.addEventDelegate(this._myDelegate, this);
 			}
+		},
+
+		/**
+		 * Pushes the app title from i18n into the FLP shell bar.
+		 * Required because Fiori Elements overrides the shell title
+		 * with "List Report" unless ShellUIService.setTitle is disabled
+		 * in the manifest and the title is set manually here.
+		 */
+		_setShellTitle: function () {
+			var oAppComponent = this.base.getAppComponent();
+			var sTitle = oAppComponent
+				.getModel("i18n")
+				.getResourceBundle()
+				.getText("appTitle");
+
+			oAppComponent.getService("ShellUIService")
+				.then(function (oShellUIService) {
+					oShellUIService.setTitle(sTitle);
+				})
+				.catch(function () {
+					// Standalone mode (index.html) — no FLP shell present, safe to ignore.
+				});
 		},
 
 		_loadDataAndFragment: function () {

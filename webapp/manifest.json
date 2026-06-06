@@ -87,6 +87,14 @@
         "uri": "i18n/i18n.properties"
       }
     },
+    "services": {
+      "ShellUIService": {
+        "factoryName": "sap.ushell.ui5service.ShellUIService",
+        "settings": {
+          "setTitle": "false"
+        }
+      }
+    },
     "resources": {
       "css": []
     },
