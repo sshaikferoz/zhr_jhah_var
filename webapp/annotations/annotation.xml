@@ -14,7 +14,8 @@
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
 
-            <!-- Dynamic placeholder for IdNum based on the selected IdTyp value -->
+            <!-- Dynamic placeholder for IdNum based on the selected IdTyp value.
+                 Strings are resolved from i18n at preprocessing time via {@i18n>key}. -->
             <Annotations Target="SAP__self.VisitorDetailsType/IdNum">
                 <Annotation Term="UI.Placeholder">
                     <If>
@@ -22,17 +23,14 @@
                             <Path>IdTyp</Path>
                             <String>GOV</String>
                         </Eq>
-                        <!-- GOV: Saudi National ID format -->
-                        <String>2NNNNNNNNNN</String>
+                        <String>{@i18n>idNumPlaceholderGov}</String>
                         <If>
                             <Eq>
                                 <Path>IdTyp</Path>
                                 <String>IQM</String>
                             </Eq>
-                            <!-- IQM: Iqama (Residence Permit) format -->
-                            <String>1NNNNNNNNN</String>
-                            <!-- Default: no specific ID type selected yet -->
-                            <String>Enter ID Number</String>
+                            <String>{@i18n>idNumPlaceholderIqm}</String>
+                            <String>{@i18n>idNumPlaceholderDefault}</String>
                         </If>
                     </If>
                 </Annotation>
