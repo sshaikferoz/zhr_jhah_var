@@ -33,6 +33,43 @@
                             <String>Enter ID Number</String>
                         </If>
                     </If>
+                           </Annotation>
+            </Annotations>
+
+            <!-- Page header title (Object Page) for a Visitor Access Request.
+                 TypeName / TypeNamePlural are localized via the @i18n model;
+                 Title/Description keep the backend DataField bindings. -->
+            <Annotations Target="SAP__self.VarListType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n>varListTypeName}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>varListTypeNamePlural}"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ReqNum"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Status"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+            <!-- Page header title (Object Page) for an individual visitor. -->
+            <Annotations Target="SAP__self.VisitorDetailsType">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="{@i18n>visitorDetailsTypeName}"/>
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>visitorDetailsTypeNamePlural}"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="SeqNum"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
                 </Annotation>
             </Annotations>
 
