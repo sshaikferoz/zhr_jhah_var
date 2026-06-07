@@ -166,6 +166,32 @@
                     "creationMode": {
                       "name": "Inline"
                     }
+                  },
+                  "columns": {
+                    "DataField::VisName": {
+                      "width": "10rem"
+                    },
+                    "DataField::IdTyp": {
+                      "width": "10rem"
+                    },
+                    "DataField::IdNum": {
+                      "width": "10rem"
+                    },
+                    "DataField::Natio": {
+                      "width": "15rem"
+                    },
+                    "DataField::IdExpDate": {
+                      "width": "8rem"
+                    },
+                    "DataField::Email": {
+                      "width": "12rem"
+                    },
+                    "DataField::PrimaryContact": {
+                      "width": "5rem"
+                    },
+                    "DataField::daysinyear": {
+                      "width": "5rem"
+                    }
                   }
                 },
                 "_VehicleDetails/@com.sap.vocabularies.UI.v1.LineItem": {
@@ -194,7 +220,7 @@
                     "DataField::PlateNum": {
                       "width": "10rem"
                     },
-                     "DataField::ArabicPlateNum": {
+                    "DataField::ArabicPlateNum": {
                       "width": "10rem"
                     }
                   }
