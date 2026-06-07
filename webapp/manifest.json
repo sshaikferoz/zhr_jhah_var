@@ -167,6 +167,37 @@
                       "name": "Inline"
                     }
                   }
+                },
+                "_VehicleDetails/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "columns": {
+                    "DataField::ReqNum": {
+                      "width": "2rem"
+                    },
+                    "DataField::PlateTyp": {
+                      "width": "10rem"
+                    },
+                    "DataField::Manufacturer": {
+                      "width": "10rem"
+                    },
+                    "DataField::Color": {
+                      "width": "10rem"
+                    },
+                    "DataField::PlateNum1": {
+                      "width": "7rem"
+                    },
+                    "DataField::PlateNum2": {
+                      "width": "7rem"
+                    },
+                    "DataField::PlateNum3": {
+                      "width": "7rem"
+                    },
+                    "DataField::PlateNum": {
+                      "width": "10rem"
+                    },
+                     "DataField::ArabicPlateNum": {
+                      "width": "10rem"
+                    }
+                  }
                 }
               }
             }
