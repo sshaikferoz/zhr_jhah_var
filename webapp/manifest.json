@@ -139,6 +139,32 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "ResponsiveTable"
+                  },
+                  "columns": {
+                    "DataField::ReqNum": {
+                      "width": "7rem"
+                    },
+                    "DataField::Type": {
+                      "width": "7rem"
+                    },
+                    "DataField::MeansTrans": {
+                      "width": "10rem"
+                    },
+                    "DataField::Begda": {
+                      "width": "10rem"
+                    },
+                    "DataField::Endda": {
+                      "width": "10rem"
+                    },
+                    "DataField::Status": {
+                      "width": "10rem"
+                    },
+                    "DataField::VendorName": {
+                      "width": "10rem"
+                    },
+                    "DataFieldWithUrl::ViewPDFText": {
+                      "width": "10rem"
+                    }
                   }
                 }
               }

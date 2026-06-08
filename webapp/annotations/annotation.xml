@@ -1,12 +1,6 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-    </edmx:Reference>
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
-    </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
     </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata4/sap/zhr_var_app_srv_bind/srvd/sap/zhr_var_app_srv_defn/0001/$metadata">
         <edmx:Include Namespace="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001" Alias="SAP__self"/>
@@ -23,17 +17,41 @@
                             <Path>IdTyp</Path>
                             <String>GOV</String>
                         </Eq>
-                        <String>2NNNNNNNNNN</String>
+                        <String>1NNNNNNNNNN</String>
                         <If>
                             <Eq>
                                 <Path>IdTyp</Path>
                                 <String>IQM</String>
                             </Eq>
-                            <String>1NNNNNNNNN</String>
+                            <String>2NNNNNNNNN</String>
                             <String>Enter ID Number</String>
                         </If>
                     </If>
                            </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.VarListType">
+                <Annotation Term="UI.FieldGroup" Qualifier="AcknoJustify">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="AcknoFlag"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="justification"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="AuthPernr"/>
+                                    <Annotation Term="UI.Hidden"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="AuthTim"/>
+                                    <Annotation Term="UI.Hidden"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>
