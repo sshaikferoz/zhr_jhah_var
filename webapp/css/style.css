@@ -5,8 +5,9 @@
    Generated control id:
      ...VarListObjectPage--fe::FormContainer::AcknoJustifyFacet
         ::FormElement::DataField::justification
-   The responsive form grid overrides plain "width", so we use "min-width".
-   Attribute selectors (id*=) avoid having to escape the "::" in CSS ids.
+   The responsive form grid overrides plain "width", so we use "min-width"
+   on the field WRAPPER, and let the inner <textarea> fill it 100% with
+   border-box so its right border is not clipped.
    =========================================================================== */
 
 /* Width of the field cell / wrapper */
@@ -15,10 +16,10 @@
   max-width: 100% !important;
 }
 
-/* Width + height of the actual text area control inside the field */
+/* Inner text area: fill the wrapper, keep border inside the box */
 [id*="AcknoJustifyFacet"][id*="justification"] textarea,
 textarea[id*="AcknoJustifyFacet"][id*="justification"] {
-  min-width: 35rem !important;
+  box-sizing: border-box !important;
   width: 100% !important;
   max-width: 100% !important;
   min-height: 12rem !important;
