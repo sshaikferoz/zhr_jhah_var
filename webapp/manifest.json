@@ -254,6 +254,31 @@
                       "width": "10rem"
                     }
                   }
+                },
+                "_ApprovalHist/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "columns": {
+                    "DataField::Appseq": {
+                      "width": "4rem"
+                    },
+                    "DataField::Approvernames": {
+                      "width": "15rem"
+                    },
+                    "DataField::PositionText": {
+                      "width": "15rem"
+                    },
+                    "DataField::Ename": {
+                      "width": "10rem"
+                    },
+                    "DataField::Actionedby": {
+                      "width": "10rem"
+                    },
+                    "DataField::Statustx": {
+                      "width": "10rem"
+                    },
+                    "DataField::ActionDate": {
+                      "width": "8rem"
+                    }
+                  }
                 }
               }
             }
