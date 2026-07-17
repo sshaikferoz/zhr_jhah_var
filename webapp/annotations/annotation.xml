@@ -52,6 +52,65 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+                <!--
+                    LineItem override: the backend metadata renders the "Maintain Locations"
+                    toolbar button with UI.Hidden Path="IsAdmin", which HIDES it from admins.
+                    We invert that here so the button is shown ONLY to admins (IsAdmin = "X").
+                    An override replaces the whole UI.LineItem collection, so every column from
+                    the backend LineItem is reproduced below verbatim — keep this in sync if the
+                    backend LineItem changes; only the Maintain Locations record differs.
+                -->
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ReqNum"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Copy Request"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.CopyRequest(com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.VarListType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Maintain Locations"/>
+                            <PropertyValue Property="SemanticObject" String="MaintVisitorLocation"/>
+                            <PropertyValue Property="Action" String="manage"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                            <!-- Show only for admins: hide when IsAdmin is not "X". -->
+                            <Annotation Term="UI.Hidden">
+                                <Ne>
+                                    <Path>IsAdmin</Path>
+                                    <String>X</String>
+                                </Ne>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Type"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MeansTrans"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Begda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Endda"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Criticality" Path="StatsCriticality"/>
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon"/>
+                            <PropertyValue Property="Value" Path="Status"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="VendorName"/>
+                        </Record>
+                        <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Label" String="View Request Form"/>
+                            <PropertyValue Property="IconUrl" String="sap-icon://pdf-attachment"/>
+                            <PropertyValue Property="Value" Path="ViewPDFText"/>
+                            <PropertyValue Property="Url" Path="ViewPDF"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>
