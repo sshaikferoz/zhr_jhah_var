@@ -171,7 +171,8 @@
                     }
                   }
                 }
-              }
+              },
+              "initialLoad": "Enabled"
             }
           }
         },

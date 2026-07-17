@@ -69,6 +69,13 @@
                             <PropertyValue Property="Label" String="Copy Request"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.CopyRequest(com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.VarListType)"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                             <!-- Show only for admins: hide when IsAdmin is not "X". -->
+                            <Annotation Term="UI.Hidden">
+                                <Ne>
+                                    <Path>IsAdmin</Path>
+                                    <String>X</String>
+                                </Ne>
+                            </Annotation>
                         </Record>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="Label" String="Maintain Locations"/>
