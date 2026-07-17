@@ -8,7 +8,7 @@ sap.ui.define([
 	return ControllerExtension.extend('com.jhah.zhrjhahvar.ext.controller.CustomHeader', {
 		override: {
 			onInit: function () {
-				this._setShellTitle();
+				// this._setShellTitle();
 
 				// var oView = this.base.getView();
 
