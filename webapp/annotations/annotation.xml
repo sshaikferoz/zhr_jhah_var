@@ -53,12 +53,17 @@
                     </Record>
                 </Annotation>
                 <!--
-                    LineItem override: the backend metadata renders the "Maintain Locations"
-                    toolbar button with UI.Hidden Path="IsAdmin", which HIDES it from admins.
-                    We invert that here so the button is shown ONLY to admins (IsAdmin = "X").
-                    An override replaces the whole UI.LineItem collection, so every column from
-                    the backend LineItem is reproduced below verbatim — keep this in sync if the
-                    backend LineItem changes; only the Maintain Locations record differs.
+                    LineItem override: this replaces the whole backend UI.LineItem collection,
+                    so every column below is reproduced verbatim from the backend metadata — keep
+                    this in sync if the backend LineItem changes.
+                    The only functional difference from the backend LineItem is that the two
+                    toolbar actions ("Copy Request" and "Maintain Locations") carry NO UI.Hidden
+                    here. A per-row property (VarList/IsAdmin) cannot be resolved on a table
+                    toolbar button (the toolbar is not bound to a row), which made both buttons
+                    disappear. Their admin-only visibility is instead driven from the global
+                    logged-in-user flag EmployeeHeader/Admin, bound via manifest.json
+                    (controlConfiguration > actions > visible). See CustomHeader.controller.js,
+                    which loads that flag into the "userInfo" model.
                 -->
                 <Annotation Term="UI.LineItem">
                     <Collection>
@@ -69,26 +74,14 @@
                             <PropertyValue Property="Label" String="Copy Request"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.CopyRequest(com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.VarListType)"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
-                             <!-- Show only for admins: hide when IsAdmin is not "X". -->
-                            <Annotation Term="UI.Hidden">
-                                <Ne>
-                                    <Path>IsAdmin</Path>
-                                    <String>X</String>
-                                </Ne>
-                            </Annotation>
+                            <!-- Admin-only visibility is applied in manifest.json via EmployeeHeader/Admin. -->
                         </Record>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="Label" String="Maintain Locations"/>
                             <PropertyValue Property="SemanticObject" String="MaintVisitorLocation"/>
                             <PropertyValue Property="Action" String="manage"/>
                             <PropertyValue Property="RequiresContext" Bool="false"/>
-                            <!-- Show only for admins: hide when IsAdmin is not "X". -->
-                            <Annotation Term="UI.Hidden">
-                                <Ne>
-                                    <Path>IsAdmin</Path>
-                                    <String>X</String>
-                                </Ne>
-                            </Annotation>
+                            <!-- Admin-only visibility is applied in manifest.json via EmployeeHeader/Admin. -->
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Type"/>

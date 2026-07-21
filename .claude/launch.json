@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "var-mock",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start-mock"],
+      "port": 8080
+    }
+  ]
+}
