@@ -144,14 +144,6 @@
                   "tableSettings": {
                     "type": "ResponsiveTable"
                   },
-                  "actions": {
-                    "DataFieldForAction::CopyRequest": {
-                      "visible": "{= ${userInfo>/Admin} === 'X'}"
-                    },
-                    "DataFieldForIntentBasedNavigation::MaintVisitorLocation::manage": {
-                      "visible": "{= ${userInfo>/Admin} === 'X'}"
-                    }
-                  },
                   "columns": {
                     "DataField::ReqNum": {
                       "width": "7rem"

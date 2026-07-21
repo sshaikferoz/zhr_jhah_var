@@ -56,32 +56,51 @@
                     LineItem override: this replaces the whole backend UI.LineItem collection,
                     so every column below is reproduced verbatim from the backend metadata — keep
                     this in sync if the backend LineItem changes.
-                    The only functional difference from the backend LineItem is that the two
-                    toolbar actions ("Copy Request" and "Maintain Locations") carry NO UI.Hidden
-                    here. A per-row property (VarList/IsAdmin) cannot be resolved on a table
-                    toolbar button (the toolbar is not bound to a row), which made both buttons
-                    disappear. Their admin-only visibility is instead driven from the global
-                    logged-in-user flag EmployeeHeader/Admin, bound via manifest.json
-                    (controlConfiguration > actions > visible). See CustomHeader.controller.js,
-                    which loads that flag into the "userInfo" model.
+                    The two toolbar actions ("Copy Request" and "Maintain Locations") are shown
+                    ONLY to admins, driven purely by annotation: UI.Hidden with Ne(IsAdmin, 'X').
+                    IsAdmin is a VarList property carrying the logged-in user's admin flag ('X' for
+                    admins); it is the same on every row, so it acts as the user-level flag.
+                    (EmployeeHeader/Admin cannot be used here: there is no navigation from VarList
+                    to EmployeeHeader, so annotation expressions cannot reach it.)
+                    NOTE: for the expression to evaluate, IsAdmin must be present in the table's
+                    OData response. autoExpandSelect only requests fields bound in the UI, so a
+                    statically hidden IsAdmin DataField is included below to force it into $select.
                 -->
                 <Annotation Term="UI.LineItem">
                     <Collection>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="ReqNum"/>
                         </Record>
+                        <!-- Hidden helper column: forces IsAdmin into the OData $select so the
+                             admin-only UI.Hidden expressions on the actions below can evaluate. -->
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="IsAdmin"/>
+                            <Annotation Term="UI.Hidden" Bool="true"/>
+                        </Record>
                         <Record Type="UI.DataFieldForAction">
                             <PropertyValue Property="Label" String="Copy Request"/>
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.CopyRequest(com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.VarListType)"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
-                            <!-- Admin-only visibility is applied in manifest.json via EmployeeHeader/Admin. -->
+                            <!-- Show only to admins: hide when IsAdmin is not 'X'. -->
+                            <Annotation Term="UI.Hidden">
+                                <Ne>
+                                    <Path>IsAdmin</Path>
+                                    <String>X</String>
+                                </Ne>
+                            </Annotation>
                         </Record>
                         <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="Label" String="Maintain Locations"/>
                             <PropertyValue Property="SemanticObject" String="MaintVisitorLocation"/>
                             <PropertyValue Property="Action" String="manage"/>
                             <PropertyValue Property="RequiresContext" Bool="false"/>
-                            <!-- Admin-only visibility is applied in manifest.json via EmployeeHeader/Admin. -->
+                            <!-- Show only to admins: hide when IsAdmin is not 'X'. -->
+                            <Annotation Term="UI.Hidden">
+                                <Ne>
+                                    <Path>IsAdmin</Path>
+                                    <String>X</String>
+                                </Ne>
+                            </Annotation>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Type"/>

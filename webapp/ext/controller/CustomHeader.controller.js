@@ -10,8 +10,6 @@ sap.ui.define([
 			onInit: function () {
 				// this._setShellTitle();
 
-				this._loadUserInfo();
-
 				// var oView = this.base.getView();
 
 				// this._myDelegate = {
@@ -21,35 +19,6 @@ sap.ui.define([
 				// };
 				// oView.addEventDelegate(this._myDelegate, this);
 			}
-		},
-
-		/**
-		 * Loads the logged-in user's EmployeeHeader record and exposes it as a
-		 * component-level "userInfo" JSON model. This drives admin-only visibility
-		 * of the "Copy Request" and "Maintain Locations" toolbar actions, bound in
-		 * manifest.json as {= ${userInfo>/Admin} === 'X'}.
-		 *
-		 * The model is created empty up-front so the visibility bindings resolve
-		 * immediately (default: not admin -> hidden), then updated once the record
-		 * arrives, at which point the bindings re-evaluate reactively.
-		 */
-		_loadUserInfo: function () {
-			var oAppComponent = this.base.getAppComponent();
-
-			var oUserInfo = new JSONModel({ Admin: "" });
-			oAppComponent.setModel(oUserInfo, "userInfo");
-
-			var oODataModel = oAppComponent.getModel();
-			if (!oODataModel) return;
-
-			var oListBinding = oODataModel.bindList("/EmployeeHeader");
-			oListBinding.requestContexts(0, 1).then(function (aContexts) {
-				if (aContexts && aContexts.length > 0) {
-					oUserInfo.setData(aContexts[0].getObject());
-				}
-			}).catch(function () {
-				// On failure, leave the default (non-admin) so the actions stay hidden.
-			});
 		},
 
 		/**
