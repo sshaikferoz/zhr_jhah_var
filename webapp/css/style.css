@@ -6,9 +6,17 @@
    Sticker app: hidden by default via this body class, and revealed by the
    CustomHeader controller extension once the admin check resolves. On a failed
    or pending check they stay hidden (safe default for admin-only actions).
+
+   NOTE on the selectors: the MDC table builds the action button id from the
+   FULLY-QUALIFIED action / intent name, e.g.
+     …::table::VarList::LineItem…CopyRequest(…zhr_var_app_srv_defn.v0001.VarListType)
+     …IntentBasedNavigation::MaintVisitorLocation::manage
+   so we match on the distinctive "CopyRequest" / "MaintVisitorLocation"
+   substrings rather than a "DataFieldForAction::" prefix (which FE does NOT
+   emit here). These substrings only occur on these two action buttons.
    =========================================================================== */
-body.hideAdminActions [id*="DataFieldForAction::CopyRequest"],
-body.hideAdminActions [id*="DataFieldForIntentBasedNavigation::MaintVisitorLocation"] {
+body.hideAdminActions [id*="::LineItem"][id*="CopyRequest"],
+body.hideAdminActions [id*="MaintVisitorLocation"] {
   display: none !important;
 }
 
