@@ -18,6 +18,59 @@ sap.ui.define([
 				// 	}
 				// };
 				// oView.addEventDelegate(this._myDelegate, this);
+
+				// Hide the admin-only toolbar actions (Copy Request / Maintain
+				// Locations) by default; reveal them only once the admin check
+				// confirms the logged-in user is an admin.
+				this._applyAdminActionVisibility();
+			}
+		},
+
+		/**
+		 * Toggle visibility of the admin-only toolbar actions ("Copy Request"
+		 * and "Maintain Locations") based on the logged-in user's admin flag.
+		 * The flag lives on the EmployeeHeader entity (Admin = "X" for admins)
+		 * of the main service. Admins get the actions; everyone else does not.
+		 *
+		 * Same approach as the Sticker app: the actions are hidden by default
+		 * via body.hideAdminActions (css/style.css) and revealed only when the
+		 * check resolves to an admin. On a failed or pending check they stay
+		 * hidden, so non-admins never see them flash in (safe default).
+		 */
+		_applyAdminActionVisibility: function () {
+			// Hidden until the role is known.
+			document.body.classList.add("hideAdminActions");
+
+			// During onInit the view isn't connected to the component tree yet,
+			// so read the OData model from the app component, which owns it, and
+			// fall back to the view.
+			var oView = this.base.getView();
+			var oComponent = (typeof this.base.getAppComponent === "function") ? this.base.getAppComponent() : null;
+			var oModel = (oComponent && oComponent.getModel()) || (oView && oView.getModel());
+			if (!oModel) {
+				console.error("OData model not available for admin check.");
+				return;
+			}
+
+			try {
+				var oListBinding = oModel.bindList("/EmployeeHeader", null, null, null, { $$groupId: "$direct" });
+				oListBinding.requestContexts(0, 1).then(function (aContexts) {
+					var bIsAdmin = false;
+					if (aContexts && aContexts.length > 0) {
+						var oUserData = aContexts[0].getObject();
+						bIsAdmin = oUserData && oUserData.Admin === "X";
+					}
+					if (bIsAdmin) {
+						document.body.classList.remove("hideAdminActions");
+					} else {
+						document.body.classList.add("hideAdminActions");
+					}
+				}).catch(function (err) {
+					console.error("Admin check fetch failed:", err);
+					// Keep the actions hidden on failure (safe default).
+				});
+			} catch (err) {
+				console.error("Error running admin check:", err);
 			}
 		},
 
