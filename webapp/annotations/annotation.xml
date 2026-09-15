@@ -107,6 +107,71 @@
                         </Record>
                     </Collection>
                 </Annotation>
+                
+                <Annotation Term="UI.FieldGroup" Qualifier="AckndJustificationfragmentxml">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="AckndJustificationfragmentxml1">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection/>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General Request Information"/>
+                            <PropertyValue Property="ID" String="GeneralInfo"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Request Details"/>
+                                        <PropertyValue Property="ID" String="RequestGrpFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#RequestGrp"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Vendor Details"/>
+                                        <PropertyValue Property="ID" String="VendorGrpFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VendorGrp"/>
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Location and Area Info"/>
+                                        <PropertyValue Property="ID" String="VisitGrpFacet"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#VisitGrp"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Vehicle Details"/>
+                            <PropertyValue Property="ID" String="VehicleInfo"/>
+                            <PropertyValue Property="Target" AnnotationPath="_VehicleDetails/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Visitor Details"/>
+                            <PropertyValue Property="ID" String="VisitorInfo"/>
+                            <PropertyValue Property="Target" AnnotationPath="_VisitorDetails/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Acknowledgment and Justification"/>
+                            <PropertyValue Property="ID" String="AcknowledgeTab"/>
+                            <PropertyValue Property="Facets">
+                                <Collection/>
+                            </PropertyValue>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Approval History Details"/>
+                            <PropertyValue Property="ID" String="ApproverInfo"/>
+                            <PropertyValue Property="Target" AnnotationPath="_ApprovalHist/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>

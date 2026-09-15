@@ -281,6 +281,19 @@
                     }
                   }
                 }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "AcknowledgeTab": {
+                      "subSections": {
+                        "Ackndjustification": {
+                          "template": "com.jhah.zhrjhahvar.ext.fragment.Ackndjustification"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -301,7 +314,10 @@
     "extends": {
       "extensions": {
         "sap.ui.controllerExtensions": {
-          "sap.fe.templates.ListReport.ListReportController": {
+          "sap.fe.templates.ListReport.ListReportController#com.jhah.zhrjhahvar::VarListList": {
+            "controllerName": "com.jhah.zhrjhahvar.ext.controller.CustomHeader"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#com.jhah.zhrjhahvar::VarListObjectPage": {
             "controllerName": "com.jhah.zhrjhahvar.ext.controller.CustomHeader"
           }
         }
