@@ -31,7 +31,8 @@
             "annotation"
           ],
           "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "4.0"
+          "odataVersion": "4.0",
+          "groupId": "$direct"
         }
       }
     }
@@ -79,7 +80,8 @@
         "settings": {
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "groupId": "$direct"
         }
       },
       "@i18n": {
@@ -281,6 +283,19 @@
                     }
                   }
                 }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "AcknowledgeTab": {
+                      "subSections": {
+                        "Ackndjustification": {
+                          "template": "com.jhah.zhrjhahvar.ext.fragment.Ackndjustification"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -301,7 +316,10 @@
     "extends": {
       "extensions": {
         "sap.ui.controllerExtensions": {
-          "sap.fe.templates.ListReport.ListReportController": {
+          "sap.fe.templates.ListReport.ListReportController#com.jhah.zhrjhahvar::VarListList": {
+            "controllerName": "com.jhah.zhrjhahvar.ext.controller.CustomHeader"
+          },
+          "sap.fe.templates.ObjectPage.ObjectPageController#com.jhah.zhrjhahvar::VarListObjectPage": {
             "controllerName": "com.jhah.zhrjhahvar.ext.controller.CustomHeader"
           }
         }

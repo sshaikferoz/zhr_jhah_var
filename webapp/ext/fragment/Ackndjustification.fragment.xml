@@ -1,0 +1,70 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <VBox
+        width="100%"
+        class="requestContainer">
+
+        <!-- Justification / Remarks -->
+        <VBox
+            width="100%"
+            class="section">
+
+            <Label
+                text="Justification / Remarks"
+                class="sectionTitle"/>
+
+            <TextArea
+                id="justificationTextArea"
+                value="{justification}"
+                width="100%"
+                rows="3"
+                growing="true"
+                growingMaxLines="8" editable="{ui>/isEditable}"/>
+
+            <!-- Existing AcknoFlag field -->
+            <CheckBox
+                id="confirmationCheckBox"
+                selected="{AcknoFlag}"
+                text="I hereby confirm that the details provided on this request are accurate, all supporting documents available with us and it is being used for the business purpose only."
+                class="confirmationCheckBox" editable="{ui>/isEditable}"/>
+
+        </VBox>
+
+
+
+        <!-- Notes -->
+        <VBox
+            width="65%"
+            class="notesSection">
+
+            <Label
+                text="Notes"
+                class="sectionTitle notesTitle"/>
+
+            <VBox>
+
+                <Text
+                    text="1. Iqama and Government ID expiry date should be in Hijri."
+                    wrapping="true"/>
+
+                <Text
+                    text="2. Passport and GCC ID expiry date should be in Gregorian."
+                    wrapping="true"/>
+
+                <Text
+                    text="3. Visitor must have the copy of approved request during the visit to JHAH facilities."
+                    wrapping="true"/>
+
+                <Text
+                    text="4. (*) These fields are mandatory to proceed with the request."
+                    wrapping="true"/>
+
+            </VBox>
+
+        </VBox>
+
+    </VBox>
+
+</core:FragmentDefinition>
