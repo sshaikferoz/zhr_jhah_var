@@ -1,13 +1,54 @@
 sap.ui.define([
-	'sap/ui/core/mvc/ControllerExtension',
-	'sap/ui/core/Fragment',
-	'sap/ui/model/json/JSONModel'
-], function (ControllerExtension, Fragment, JSONModel) {
+	"sap/ui/core/mvc/ControllerExtension",
+	"sap/ui/core/Fragment",
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/Element",
+	"sap/ui/core/format/DateFormat",
+	"sap/ui/base/Event",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator",
+	"sap/m/MessageBox",
+	"sap/m/Label",
+	"sap/m/Text",
+	"sap/ui/layout/form/FormElement"],
+	function (ControllerExtension, Fragment, JSONModel, Element, DateFormat, Event, Filter, FilterOperator, MessageBox, Label, Text, FormElement) {
 	'use strict';
 
 	return ControllerExtension.extend('com.jhah.zhrjhahvar.ext.controller.CustomHeader', {
 		override: {
 			onInit: function () {
+					var oExtension = this;
+					var oView = oExtension.base.getView();
+
+					this._log("Controller extension initialized.");
+
+					var oFioriI18nModel = oView &&
+						oView.getModel("sap.fe.i18n");
+
+					if (
+						oFioriI18nModel &&
+						!oFioriI18nModel.__jhahCustomTextsApplied
+					) {
+						oFioriI18nModel.enhance({
+							bundleName:
+								"com.jhah.zhrjhahvar.i18n.i18n"
+						});
+
+						oFioriI18nModel.__jhahCustomTextsApplied = true;
+
+						this._log(
+							"Fiori Elements texts enhanced.",
+							{
+								bundleName:
+									"com.jhah.zhrjhahvar.i18n.i18n"
+							}
+						);
+					}
+
+					oView.addStyleClass("zhrjhahvar-app");
+					document.body.classList.add(
+						"zhrjhahvar-app"
+					);
 
 				// this._setShellTitle();
 
@@ -26,17 +67,23 @@ sap.ui.define([
 				console.log("=== CustomHeader Controller Extension Initialized ===");
 				this._applyAdminActionVisibility();
 
+
+
 			},
 			routing: {
 				onAfterBinding: function (oBindingContext) {
-
-					// Re-apply because Fiori Elements may recreate
 					// StandardAction::Create buttons after binding
 					this._applyUIEnhancements();
 
 				}
 			}
 		},
+
+		 _log: function (sMessage, oData) {
+            var sLog = "[JHAH-EXT] " + sMessage;
+            if (oData !== undefined) console.log(sLog, oData);
+            else console.log(sLog);
+        },
 		_applyUIEnhancements: function () {
 
 			var oExtension = this;

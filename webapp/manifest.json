@@ -31,7 +31,8 @@
             "annotation"
           ],
           "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "4.0"
+          "odataVersion": "4.0",
+          "groupId": "$direct"
         }
       }
     }
@@ -79,7 +80,8 @@
         "settings": {
           "operationMode": "Server",
           "autoExpandSelect": true,
-          "earlyRequests": true
+          "earlyRequests": true,
+          "groupId": "$direct"
         }
       },
       "@i18n": {
