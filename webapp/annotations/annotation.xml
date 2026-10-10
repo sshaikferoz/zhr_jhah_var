@@ -285,6 +285,12 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="SAP__self.VarListType/BpType">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VarListType/PrjName">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
