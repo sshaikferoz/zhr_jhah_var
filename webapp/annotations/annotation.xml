@@ -5,6 +5,9 @@
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata4/sap/zhr_var_app_srv_bind/srvd/sap/zhr_var_app_srv_defn/0001/$metadata">
         <edmx:Include Namespace="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001" Alias="SAP__self"/>
     </edmx:Reference>
@@ -178,6 +181,55 @@
             </Annotations>
             <Annotations Target="SAP__self.VarListType/VendorName">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+
+            <!-- Hide the "Editing Status" filter in the List Report filter bar
+                 (DraftAdministrativeData not filterable). Evaluated by Fiori elements
+                 as of SAPUI5 1.133+/1.136 LTS; ignored on 1.120.
+                 Note: this term replaces the backend NavigationRestrictions of VarList,
+                 so the InsertRestrictions of the compositions are repeated here and
+                 must be kept in sync with the service metadata. -->
+            <Annotations Target="SAP__self.Container/VarList">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_ApprovalHist"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_ApprovalHist"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_VehicleDetails"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_VehicleDetails"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_VisitorDetails"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_VisitorDetails"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
             </Annotations>
         </Schema>
     </edmx:DataServices>
