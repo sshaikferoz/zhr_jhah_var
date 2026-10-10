@@ -32,6 +32,20 @@
                     </If>
                            </Annotation>
             </Annotations>
+
+            <!-- Email is mandatory only for the primary contact, optional otherwise.
+                 Overrides the static Mandatory field control delivered by the service.
+                 Note: numeric values are required here (7 = Mandatory, 3 = Optional);
+                 Fiori elements does not evaluate EnumMember branches of a dynamic expression. -->
+            <Annotations Target="SAP__self.VisitorDetailsType/Email">
+                <Annotation Term="Common.FieldControl">
+                    <If>
+                        <Path>PrimaryContact</Path>
+                        <Int>7</Int>
+                        <Int>3</Int>
+                    </If>
+                </Annotation>
+            </Annotations>
             <Annotations Target="SAP__self.VarListType">
                 <Annotation Term="UI.FieldGroup" Qualifier="AcknoJustify">
                     <Record>
