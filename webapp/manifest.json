@@ -202,23 +202,19 @@
                       "width": "10rem"
                     },
                     "DataField::Natio": {
-                      "width": "15rem",
-                      "importance": "High"
+                      "width": "15rem"
                     },
                     "DataField::IdExpDate": {
-                      "width": "8rem",
-                      "importance": "High"
+                      "width": "8rem"
                     },
                     "DataField::Email": {
-                      "width": "12rem",
-                      "importance": "High"
+                      "width": "12rem"
                     },
                     "DataField::PrimaryContact": {
                       "width": "5rem"
                     },
                     "DataField::daysinyear": {
-                      "width": "5rem",
-                      "importance": "High"
+                      "width": "5rem"
                     }
                   }
                 },
