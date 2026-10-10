@@ -25,7 +25,6 @@ sap.ui.require(
     "com/jhah/zhrjhahvar/test/integration/FirstJourney",
     "com/jhah/zhrjhahvar/test/integration/VarListListJourney",
     "com/jhah/zhrjhahvar/test/integration/VarListObjectPageJourney",
-    "com/jhah/zhrjhahvar/test/integration/VisitorDetailsObjectPageJourney",
 ], function (QUnit) {
     "use strict";
     QUnit.start();

@@ -118,11 +118,6 @@
           "pattern": "VarList({key}):?query:",
           "name": "VarListObjectPage",
           "target": "VarListObjectPage"
-        },
-        {
-          "pattern": "VarList({key})/_VisitorDetails({key2}):?query:",
-          "name": "VisitorDetailsObjectPage",
-          "target": "VisitorDetailsObjectPage"
         }
       ],
       "targets": {
@@ -187,18 +182,11 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/VarList",
-              "navigation": {
-                "_VisitorDetails": {
-                  "detail": {
-                    "route": "VisitorDetailsObjectPage"
-                  }
-                }
-              },
               "controlConfiguration": {
                 "_VisitorDetails/@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "creationMode": {
-                      "name": "InlineCreationRows"
+                      "name": "Inline"
                     },
                     "enablePaste": false,
                     "disableCopyToClipboard": true
@@ -308,17 +296,6 @@
                   }
                 }
               }
-            }
-          }
-        },
-        "VisitorDetailsObjectPage": {
-          "type": "Component",
-          "id": "VisitorDetailsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/VarList/_VisitorDetails"
             }
           }
         }
