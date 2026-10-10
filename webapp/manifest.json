@@ -144,7 +144,8 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "disableCopyToClipboard": true
                   },
                   "columns": {
                     "DataField::ReqNum": {
@@ -197,8 +198,10 @@
                 "_VisitorDetails/@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "creationMode": {
-                      "name": "Inline"
-                    }
+                      "name": "InlineCreationRows"
+                    },
+                    "enablePaste": false,
+                    "disableCopyToClipboard": true
                   },
                   "columns": {
                     "DataField::VisName": {
@@ -256,6 +259,10 @@
                     "DataField::ArabicPlateNum": {
                       "width": "10rem"
                     }
+                  },
+                  "tableSettings": {
+                    "enablePaste": false,
+                    "disableCopyToClipboard": true
                   }
                 },
                 "_ApprovalHist/@com.sap.vocabularies.UI.v1.LineItem": {
@@ -281,6 +288,10 @@
                     "DataField::ActionDate": {
                       "width": "8rem"
                     }
+                  },
+                  "tableSettings": {
+                    "enablePaste": false,
+                    "disableCopyToClipboard": true
                   }
                 }
               },
