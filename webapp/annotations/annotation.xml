@@ -133,12 +133,12 @@
                             <PropertyValue Property="Action" String="com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.CopyRequest(com.sap.gateway.srvd.zhr_var_app_srv_defn.v0001.VarListType)"/>
                             <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
                         </Record>
-                        <Record Type="UI.DataFieldForIntentBasedNavigation">
+                        <!-- <Record Type="UI.DataFieldForIntentBasedNavigation">
                             <PropertyValue Property="Label" String="Maintain Locations"/>
                             <PropertyValue Property="SemanticObject" String="MaintVisitorLocation"/>
                             <PropertyValue Property="Action" String="manage"/>
                             <PropertyValue Property="RequiresContext" Bool="false"/>
-                        </Record>
+                        </Record> -->
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Value" Path="Type"/>
                         </Record>
@@ -233,9 +233,6 @@
                     </Collection>
                 </Annotation>
             </Annotations>
-            <Annotations Target="SAP__self.VarListType/VendorName">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
-            </Annotations>
 
             <!-- Hide the "Editing Status" filter in the List Report filter bar
                  (DraftAdministrativeData not filterable). Evaluated by Fiori elements
@@ -289,6 +286,9 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
             </Annotations>
             <Annotations Target="SAP__self.VarListType/PrjName">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="SAP__self.VarListType/VendorName">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
             </Annotations>
         </Schema>
