@@ -7,9 +7,13 @@
    "Maintain Locations on the VarList table toolbar is
    shown ONLY to admins (EmployeeHeader/Admin = "X").
    =========================================================================== */
-body.hideAdminActions [id*="MaintVisitorLocation"] {
-  display: none !important;
+
+/* Hide admin actions only when the user is not an admin */
+body.hideAdminActions [id*="MaintVisitorLocation"],
+body.hideAdminActions [id*="MaintainMasterData"] {
+    display: none !important;
 }
+
 
 /* ===========================================================================
    Acknowledgment and Justification - "Justification / Remarks" text area
@@ -25,6 +29,7 @@ body.hideAdminActions [id*="MaintVisitorLocation"] {
   width: 35rem !important;
   max-width: 100% !important;
 }
+
 /* Height + width of the actual text area control */
 /* textarea[id*="justification"] { */
   /* height: 12rem !important;

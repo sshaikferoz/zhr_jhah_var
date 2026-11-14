@@ -46,19 +46,23 @@
             <VBox>
 
                 <Text
+                    text="1.ID expiry date should be in Gregorian."
+                    wrapping="true"/>
+
+                <!-- <Text
                     text="1. Iqama and Government ID expiry date should be in Hijri."
-                    wrapping="true"/>
+                    wrapping="true"/> -->
 
-                <Text
+                <!-- <Text
                     text="2. Passport and GCC ID expiry date should be in Gregorian."
+                    wrapping="true"/> -->
+
+                <Text
+                    text="2. Visitor must have the copy of approved request during the visit to JHAH facilities."
                     wrapping="true"/>
 
                 <Text
-                    text="3. Visitor must have the copy of approved request during the visit to JHAH facilities."
-                    wrapping="true"/>
-
-                <Text
-                    text="4. (*) These fields are mandatory to proceed with the request."
+                    text="3. (*) These fields are mandatory to proceed with the request."
                     wrapping="true"/>
 
             </VBox>

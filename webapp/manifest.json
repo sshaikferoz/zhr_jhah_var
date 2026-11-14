@@ -31,8 +31,7 @@
             "annotation"
           ],
           "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "4.0",
-          "groupId": "$direct"
+          "odataVersion": "4.0"
         }
       }
     }
@@ -167,6 +166,50 @@
                     "DataFieldWithUrl::ViewPDFText": {
                       "width": "10rem"
                     }
+                  },
+                  "actions": {
+                    "MaintainMasterData": {
+                      "type": "Menu",
+                      "text": "Maintain Master Data",
+                      "menu": [
+                        "NavMaintainWFAdmin",
+                        "NavMaintainBlockedVehicle",
+                        "NavMaintainLocation",
+                        "NavMaintainBlockedVendor",
+                        "NavMaintainCoordinator",
+                        "NavMaintainDomains"
+                      ]
+                    },
+                    "NavMaintainWFAdmin": {
+                      "text": "Maintain Workflow Admin",
+                      "icon": "sap-icon://manager",
+                      "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainWFAdmin"
+                    },
+                    "NavMaintainBlockedVehicle": {
+                      "text": "Maintain Blocked Vehicles",
+                      "icon": "sap-icon://shipping-status",
+                      "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainBlockedVehicle"
+                    },
+                    "NavMaintainLocation": {
+                      "text": "Maintain Location",
+                      "icon": "sap-icon://map-2",
+                      "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainLocation"
+                    },
+                    "NavMaintainBlockedVendor": {
+                      "text": "Maintain Blocked Vendors",
+                      "icon": "sap-icon://offsite-work",
+                      "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainBlockedVendor"
+                    },
+                    "NavMaintainCoordinator": {
+                      "text": "Maintain Coordinators",
+                      "icon": "sap-icon://group",
+                      "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainCoordinator"
+                    }
+                  },
+                  "NavMaintainDomains": {
+                    "text": "Maintain Domains",
+                    "icon": "sap-icon://list",
+                    "press": "com.jhah.zhrjhahvar.ext.controller.CustomActions.navigateToMaintainDomains"
                   }
                 }
               },
